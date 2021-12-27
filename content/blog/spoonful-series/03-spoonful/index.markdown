@@ -1,8 +1,8 @@
 ---
-title: "A third post"
+title: "Multivariant Analysis"
 weight: 3
 subtitle: ""
-excerpt: "Grid is the very first CSS module created specifically to solve the layout problems we’ve all been hacking our way around for as long as we’ve been making websites."
+excerpt: "Working with categorical and numerical data is important to develop skills with tidydata in a way to communicate conclusion about a topic"
 date: 2021-12-26
 draft: false
 ---
@@ -10,10 +10,10 @@ draft: false
 {{< here >}}
 
 
-## are you still here?
+## Multivariant Analysis
 
-### does this work?
+### Conclusions
 
 ---
 
-## final stretch!
+## Final Comments

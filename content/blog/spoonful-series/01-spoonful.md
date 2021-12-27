@@ -1,11 +1,9 @@
 ---
 date: "2021-12-26"
 draft: false
-excerpt: Grid is the very first CSS module created specifically to solve the layout
-  problems we’ve all been hacking our way around for as long as we’ve been making
-  websites.
+excerpt: Read data and verify structure is the most important step in data science, in this first post I am going to show you how to do it with data from Institute of Geological, Metallurgic and Mining relate to Enviromental Base Line (Water Resource)
 subtitle: ""
-title: A first post
+title: Read and Structure
 weight: 1
 ---
 

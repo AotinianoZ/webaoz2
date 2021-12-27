@@ -1,11 +1,9 @@
 ---
 date: "2021-12-26"
 draft: false
-excerpt: Grid is the very first CSS module created specifically to solve the layout
-  problems we’ve all been hacking our way around for as long as we’ve been making
-  websites.
+excerpt: In this second post we are talking about working with statistics, exploratory graphs and univariant - bivariant data Analysis
 subtitle: ""
-title: A second post
+title: Exploratory Analysis
 weight: 2
 ---
 
@@ -20,4 +18,4 @@ weight: 2
 
 ## Statistics Test
 
-## Univariante and Bivariante Analysis
+## Univariant and Bivariant Analysis
