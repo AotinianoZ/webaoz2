@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Geoscience Blog</title>
+    <link>https://aozweb.netlify.app/categories/</link>
+    <description>Recent content in Categories on Geoscience Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 27 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aozweb.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Applications</title>
+      <link>https://aozweb.netlify.app/categories/applications/</link>
+      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://aozweb.netlify.app/categories/applications/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://aozweb.netlify.app/categories/web/</link>
+      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://aozweb.netlify.app/categories/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>workshop</title>
+      <link>https://aozweb.netlify.app/categories/workshop/</link>
+      <pubDate>Fri, 01 Jan 2021 14:00:00 -0600</pubDate>
+      
+      <guid>https://aozweb.netlify.app/categories/workshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Geoscience Water Resource</title>
+      <link>https://aozweb.netlify.app/categories/geoscience-water-resource/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aozweb.netlify.app/categories/geoscience-water-resource/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://aozweb.netlify.app/categories/r/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aozweb.netlify.app/categories/r/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

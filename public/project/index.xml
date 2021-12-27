@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Geoscience Projects and Technology on Geoscience Blog</title>
+    <link>https://aozweb.netlify.app/project/</link>
+    <description>Recent content in Geoscience Projects and Technology on Geoscience Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 27 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://aozweb.netlify.app/project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hydroapp Web Data Analysis</title>
+      <link>https://aozweb.netlify.app/project/giraffes/</link>
+      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://aozweb.netlify.app/project/giraffes/</guid>
+      <description>Hidroapp is a design system that allows you to analysis data online relate to hidrochemical water resource.      Data     How to use it?     Final Suggestions     </description>
+    </item>
+    
+    <item>
+      <title>Next Project</title>
+      <link>https://aozweb.netlify.app/project/penguins/</link>
+      <pubDate>Tue, 02 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://aozweb.netlify.app/project/penguins/</guid>
+      <description> “Something is going to come soon. So stay fullish, stay hungry.”     — Alonso Otiniano, Ist working on this application [^1]
+ </description>
+    </item>
+    
+  </channel>
+</rss>

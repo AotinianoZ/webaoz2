@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Talks that Last on Geoscience Blog</title>
+    <link>https://aozweb.netlify.app/talk/</link>
+    <description>Recent content in Talks that Last on Geoscience Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Jan 2021 14:00:00 -0600</lastBuildDate><atom:link href="https://aozweb.netlify.app/talk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Geoscience Multiverse</title>
+      <link>https://aozweb.netlify.app/talk/second-seedling/</link>
+      <pubDate>Fri, 01 Jan 2021 14:00:00 -0600</pubDate>
+      
+      <guid>https://aozweb.netlify.app/talk/second-seedling/</guid>
+      <description>Panorama     El curso desarrolla desde los conceptos básicos de geodatabase (base de datos geoespacial) para entender la estructura y funcionamiento de base de datos espacial. Además se realiza el análisis estadístico exploratorio de aguas, suelo, rocas y sedimentos de drenaje, así como modelos estadísticos, geoestadísticos y de machine learning para su aplicación en recursos hídricos, geoquímica, hidroquímica, peligros geológicos, rock blasting todo esto enmarcado en la interactividad y desarrollo web.</description>
+    </item>
+    
+    <item>
+      <title>Statical Data Analysis Applied to Geology</title>
+      <link>https://aozweb.netlify.app/talk/campfire/</link>
+      <pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://aozweb.netlify.app/talk/campfire/</guid>
+      <description>I was really excited to gave this talk! Stay tuned for video and slides.</description>
+    </item>
+    
+  </channel>
+</rss>
