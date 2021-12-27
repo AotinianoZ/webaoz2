@@ -3,7 +3,7 @@ author: Alonso Otiniano & Joseps Andrade
 categories:
 - Applications
 - Web
-date: "2021-12-27"
+date: 2021-12-26"
 draft: false
 excerpt: Upload your data and analyze information in real time in easy way to do it. This is a prototipe, [download demo data](https://drive.google.com/drive/folders/1pEH-ygnWDGrvtQSUt2bKQN3ndG8A9cAt?usp=sharing)
 subtitle: Hidrochemical Base Analysis - biplot, correlation, data table and piper interactive functions.
