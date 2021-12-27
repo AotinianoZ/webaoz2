@@ -12,6 +12,8 @@ Thank you to all the folks who have contributed both technical and creative skil
 
 + [Dr. Carlos Benavente:](https://www.researchgate.net/profile/Carlos_Benavente_Escobar) (give me the opportunity to create in geology all that my mind believe)
 
++ [Dr. Jimmy Rosales:](https://dina.concytec.gob.pe/appDirectorioCTI/VerDatosInvestigador.do?id_investigador=4091) (For trust in my work and experience in geological geostatistics and machine learning)
+
 + [Enviromental Base Line:](https://repositorio.ingemmet.gob.pe/handle/20.500.12544/3064) (all the team that believes in my knowledge in geoscience and statistics)
 
 And last but not least, **Laura Danby** and *my family* for support me all the time spent in this project.
