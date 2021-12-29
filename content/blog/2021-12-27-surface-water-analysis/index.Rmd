@@ -1,0 +1,671 @@
+---
+title: Surface Water Analysis - Non Spatial I
+author: Alonso Otiniano
+date: '2021-12-27'
+slug: []
+excerpt: We are going to show you the first steps in analyze data from water resource from INGEMMET.
+subtitle: "Subbasin Alto Camaná - Arequipa"
+layout: singel-sidebar
+categories:
+  - Water
+tags:
+  - data science
+output: 
+  blogdown::html_page:
+    toc: true # table of content true
+    number_sections: true  ## if you want number sections at each table header
+    highlight: "espresso"  # specifies the syntax highlighting styl
+---
+
+# Data Base (Structure and General Review).
+
+It is recommendable to look up [Cheetsheet Rstudio](https://www.rstudio.com/resources/cheatsheets/) that contain many of the functions that we are going to use for the analysis. We are going to start loading the principal libraries  (*before you have to install the libraries*)
+
+```{r, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message=FALSE, fig.align = 'center')
+#### Loading L ####
+library(MASS)
+library(NADA)
+library(ggmap)
+library(nortest)
+library(psych)
+library(chron)
+library(readxl)
+library(tidyverse)
+library(knitr)
+library(xaringan)
+library(xaringanExtra)
+xaringanExtra::use_panelset()
+dir() #verify directory
+```
+
+## Loading Data:
+
+To loading the data we have to use the function `read_xlsx()`:
+
+```{r,echo = TRUE}
+AC <- read_xlsx("BD_AC.xlsx", col_names = TRUE)
+#View(AC)   Allow visualize data
+dim(AC)  # dimensions of data frame
+colnames(AC) # name of all the columns
+```
+
+With `dim` function we know that the data frame have 161 rows and 169 columns. Also the `colnames` function give us the name of all the columns variables.
+
+```{r}
+str(AC[ ,-c(31,62)], list.len = ncol(AC[ ,-c(31,62)]), vec.len=4) #check all the structure of your data
+head(AC, n = 10)  # first 10 rows
+tail(AC, n = 10) # last 10 rows
+```
+
+With `str()` function we check that the data is format tbl_df or tbl or data.frame, moreover we can check the kind of data type (character, POSIXct, number or logical). The `head()` and `tail()` function show us the first and last 10 rows, respectively.
+
+The data set is relative huge, so we are going to choose few variables to start making a simple analysis, additionally the result of code show us that the we have Not Available data in some columns and time variables (Fecha, Hora) we are going to deal with Not Available but not with time serie data in this part. Finally, we have many data below the detection limit **BDL** that we are going to complete through `ROS`methodology.
+
+* Check the null data:
+
+To analyze the null data we have to use the function `sapply()` and `is.na()`, moreover the library **Amelia** to draw a null map.
+
+```{r, out.width="80%"}
+empty_values <- sapply(AC, function(x) sum(is.na(x)))
+empty_values
+#Con mapa:
+library(Amelia)
+missmap(AC, col=c("black","grey"),legend = FALSE)
+```
+
+The majority of columns (variables) have 9 rows of null data (we have some variables below and above but we are not going to analyzed that data) so we are going to delete information that not have this data or is empty.
+
+* Delete information that do not have the variable *Temporada*
+
+Verify the null per Temporada with the function `which()` and `is.na()`, then delete this null values from the data frame.
+
+```{r}
+id <- which(is.na(AC$Temporada)) 
+AC <- AC[-id, ]
+# check
+is.na(AC$Temporada)
+```
+
+### Error - Ionic Balance
+
+The revision of majoritary analytes (taking to ionic balance) is done in dissolve elements, because is necessary a **almost coloidal state**, if the filters of sample are small is better. 
+
+The equation of Ionic Balance Error is take from [Zekâi Şen](https://www.elsevier.com/books/practical-and-applied-hydrogeology/sen/978-0-12-800075-5):
+
+
+$$Error = \frac{Total Cations - Total Anions}{Total Cations + Total Anions}$$
+
+### First we have to convert to meq/l:
+
+```{r, eval=FALSE, echo = TRUE}
+# Code to generate equivalents (will not be used, only is mentioned):
+# because we have to do data cleansing.
+AC$Ca_meq.l <- (AC$Ca_tot*2)/40.08
+AC$Mg_meq.l <- (AC$Mg_tot*2)/24.32
+AC$Na_meq.l <- (AC$Na_tot*1)/23.00
+AC$K_meq.l <-(AC$K_tot*1)/39.10
+AC$Cl_meq.l <-(AC$Cl*1)/35.56
+AC$SO4_meq.l <-(AC$SO4_menos_2*2)/96.06
+AC$HCO3_meq.l <- (AC$HCO3_menos*1)/61.01
+AC$CO3_meq.l <- (AC$CO3_menos_2_mg_L*2)/60
+
+AC$Tot_Cat <- rowSums(AC[ ,c("Ca_meq.l","Mg_meq.l","Na_meq.l","K_meq.l")])
+AC$Tot_Ani <- rowSums(AC[ ,c("Cl_meq.l","SO4_meq.l","HCO3_meq.l", "CO3_meq.l")])
+AC$Err_Rel <- 100*((AC$Tot_Cat-AC$Tot_Ani)/(AC$Tot_Cat+AC$Tot_Ani))
+```
+
+Rename some variables from the data frame and calculate the porcenptual error following the equation mentioned above.
+
+```{r}
+AC <- AC %>% rename(Tot_Cat="Total_meq_l.1", Tot_Ani="Total_meq_l.2")
+AC$Error <- 100*((AC$Tot_Cat-AC$Tot_Ani)/(AC$Tot_Cat+AC$Tot_Ani))
+```
+
+### Error Analysis with Normality and QQ-Plot:
+
+For the normality test associate with QQ-Plot we are going to use the library **ggpubr** and **ggplot2**.
+
+```{r, out.width="80%", echo = TRUE}
+library(ggpubr)
+par(mfrow=c(1,2))
+qq<-ggplot(AC, aes(sample=Error))+
+  geom_qq_line(line.p = c(0.25, 0.75), col = "steelblue")+
+  stat_qq()+
+  xlab("Cuantiles Teoricos Normales") + ylab("Valores de Error Reales")+
+  labs(caption = "Basado en Data del Laboratorio de INGEMMET")+
+  scale_colour_manual()
+
+dh <- ggplot(AC, aes(x=Error)) +
+  geom_histogram(aes(y = stat(density)), color="black",fill="steelblue") +
+  stat_function(
+    fun = dnorm, 
+    args = list(mean = mean(0), sd = sd(AC$Error)), 
+    lwd = 2, 
+    col = 'red')+
+  geom_vline(xintercept = c(-10,10), linetype="longdash",color="blue",size=1.5)+
+  annotate("text", x=2, y=0.12, label="Normal Distribution", color="red", fontface=2,
+           size=4)+
+  geom_segment(x = 6.4, y = 0.115, xend = 2.2, yend = 0.09,
+               arrow = arrow(length = unit(0.5, "cm")))+
+  annotate("text",x=-7.5,y=0.13,label="Limite Inferior",color="black", fontface=2,
+           size=4)+
+  annotate("text",x=+6.0,y=0.13,label="Limite Superior",color="black", fontface=2,
+           size=4)
+
+figure <- ggarrange(dh, qq,
+                    labels = c("Distribucion de Errores", "QQplot-Errores"),
+                    ncol = 2, nrow = 1)
+figure
+```
+
+From the picture above we can see the distribution of errors follow pseudo normal distribution, moreover the values of histogram are inside the absolute value of +/-10%. The QQplot-Errores present some tails that not follow a normal distribution. To check that values outside the range we continue with the following code.
+
+### Identifying Values outsite of limit
+
+Check the values that are major to 10 % of absolute value. See the code below.
+
+```{r}
+library(DT)
+id <- which(AC$Error>=10 | AC$Error<=-10)
+datatable(AC[id, ] %>% select(Codigo))
+```
+
+Let´s go to complete values below detection limit :smile:
+
+# Below Detection Limit Values (<L.D.).
+
+To input values below the detection limit we are going to use the semiparametric method **ROS(Robust Regression Orden in Statistics)** created by [D.R. Helsel and R.M. Hirsch](https://pubs.er.usgs.gov/publication/twri04A3) using the `NADA` *(Not Available Data Analysis)* (https://cran.r-project.org/web/packages/NADA/index.html) to complete data below detection limit with only one value below the limit, in this case we are going to focus by "temporada" in the sub basin **Alto Camaná**. We will use the variable Arsenic (**As**) like example to complete data. The library `DT` help us to visualization of interactive html table, with tons of options for customization like excel program.
+
+```{r}
+library(DT)
+# Will filter Temporada equal to Avenida
+datatable(AC[ ,c("As_dis", "Cu_dis")], filter = "top") 
+```
+
+As you can see the table above have on the left the dissolved Arsenic value below the detecction limit **<0.001** and on the right the dissolved Copper value below the detection limit **<0.0005**. So we are goint to complet this data in order to use this variable values and not loose the information of the rows for make multivariable analysis. Adittionally, we have to use criteria tu complete the data following two principals things : 
+
++ *Spatial* Distribution of the Sample.
+
++ *Temporal* Distribution of the Sample.
+
++ *Geological* Domain of the Sample.
+
+That 3 factors mentioned above can change drastically the way to input values, so we have to take in consideration.
+
+```{r, results='asis'}
+library(DT)
+z <- AC[AC$Temporada=="Avenida", ] #Do it the same for Estiaje
+#Preparing Data for Analysis:
+val0 <- unique(grep("<", z$As_dis, value = TRUE))
+z$var0 <- z$As_dis
+z$ND_var0 <- rep(0, length(z$var0))
+indcero0 <- which(z$var0==val0)
+z$var0[indcero0] <- substr(val0,2,nchar(val0))
+z$var0 <- as.numeric(z$var0)
+z$ND_var0[indcero0] <- 1
+z$ND_var0 <- as.logical(z$ND_var0)
+#Sort the Data Acorder to Study:
+indna0 <- is.na(z$var0)
+yn0 <- z$var0[which(indna0==FALSE)]
+cyn0 <- z$ND_var0[which(indna0==FALSE)]
+yn0 <- sort(yn0,index.return=TRUE)
+cyn0 <- cyn0[yn0$ix]
+#Apply the ROS (REGRESSION IN ORDER STATISTICS)
+elemento <- ros(yn0$x,cyn0,forwardT = "log", reverseT = "exp")
+elemento <- as.data.frame(elemento)
+id <- which(elemento$censored==TRUE)
+elemento <-  elemento[id, ]
+
+#Do it carefully!!!!
+AC$As_com <- AC$As_dis #omit this step in estiaje
+
+#Loop to Imput Values:
+id <- which(AC$As_com==val0)
+
+for(i in 1:length(id)){
+      replace <- elemento$modeled[i]
+      AC[id, ]$As_com[i] <-  replace
+}
+
+#Do it the same for Estiaje:
+z <- AC[AC$Temporada=="Estiaje", ] #
+#Preparing Data for Analysis:
+val0 <- unique(grep("<", z$As_dis, value = TRUE))
+z$var0 <- z$As_dis
+z$ND_var0 <- rep(0, length(z$var0))
+indcero0 <- which(z$var0==val0)
+z$var0[indcero0] <- substr(val0,2,nchar(val0))
+z$var0 <- as.numeric(z$var0)
+z$ND_var0[indcero0] <- 1
+z$ND_var0 <- as.logical(z$ND_var0)
+#Sort the Data Acorder to Study:
+indna0 <- is.na(z$var0)
+yn0 <- z$var0[which(indna0==FALSE)]
+cyn0 <- z$ND_var0[which(indna0==FALSE)]
+yn0 <- sort(yn0,index.return=TRUE)
+cyn0 <- cyn0[yn0$ix]
+#Apply the ROS (REGRESSION IN ORDER STATISTICS)
+elemento <- ros(yn0$x,cyn0,forwardT = "log", reverseT = "exp")
+elemento <- as.data.frame(elemento)
+id <- which(elemento$censored==TRUE)
+elemento <-  elemento[id, ]
+
+#Loop to Input Values:
+id <- which(AC$As_com==val0)
+
+for(i in 1:length(id)){
+      replace <- elemento$modeled[i]
+      AC[id, ]$As_com[i] <-  replace
+}
+
+#Finally run this:
+AC$As_com <- as.numeric(AC$As_com)
+datatable(AC[ ,c("As_dis","As_com")])  #Test if works
+```
+
+Well, is done!  :grinning:
+
+# Exploratory Data Analysis usign statistics 
+
+First we need the `caracters` convert into `factors`, moreover  *select the most important columns* to develop the analysis (this last depend a lot of **geological criteria** and the **object** that you wish), although is an exploratory data analysis, so let´s go all in!! :smile:
+
+* Loading data with complet elements values (after ROS)
+
+```{r}
+AC_final <- read.csv(file = "BD_AC_final.csv", header = TRUE)
+# sapply(AC , class) see variables class
+```
+
+## Convert characters to factors:
+
+Select variable to convert into factors:
+
+```{r}
+cols <- c("Proyecto","Temporada","Codigo","Codigo_Corto","Nombre",
+          "Nombre_Completo","Zona","Lugar","Distrito","Provincia",
+          "Vertiente","Cuenca","Subcuenca","Microcuenca",
+          "Tipo_Fuente","Clase_Fuente","Uso","Asp_Geologico","Desc_Litologica",
+          "Morfologia","Color","Olor","Precipitados","Algas_plantas","Basurales",
+          "Animales","Letrinas_Sítios","Poblacion","Pasivos_Ambientales","Act_Antropica",
+          "Alt.Geo.Nat","Ev.Meteo","Viento","Foto","Observaciones","Realizado_por")
+AC_final[cols] <- lapply(AC_final[cols], factor) 
+```
+
+## Summary Information:
+
+```{r}
+summary(AC_final[ ,-1]) # The first column was create automatically (omit)
+```
+
+You can check carefully the summary, in my case I spend some time understanding the summary variable by variable to try to understand the whole data.
+
+To make the preliminary analysis we are going to use 4 principal factors:
+
+* *Temporada*.
+* *Microcuenca*.
+* *Tipo Fuente*.
+* *Clase Fuente*.
+
+And inside the qualitative variables:
+
+* The complete elements of *As_com, B_com, Cu_com, Fe_com, Mn_com, Ti_com, Ni_com* with *T_Fuente, pH, ORP_mv, CE_uS_cm, TDS_mg_L, Salinidad_PSU*.
+
+We can considerate more variables, more sections, but in this case only will use only the mentions above. Will use a powerful package `tidyverse()`.
+
+>##### GGPLOT
+>
+>The ggplot package have fully functionality of grammar graphics for data science, so the principal thing that you have to know is the general structure to start using this awesome creation, thanks to [Hadley Wickhman & Garrett Grolemund](https://www.tidyverse.org)
+>
+> — _A.Otiniano_
+
+## Structure ggplot {.panelset}
+
+### General Structure
+
+This the general structure of ggplot2:
+
+```r
+ggplot(data=<DATA>)+
+  <GEOM_FUNCTION>(
+    mapping=aes(<MAPPINGS>),
+    stat=<STAT>,
+    position=<POSITION>
+  )+
+  <COORDINATE_FUNCTION>+
+  <FACET_FUNCTION>
+```
+
+### Arguments and Functions
+
+#### aes()
+
+Aesthetics works with arguments that are: *x*, *y*, *color*, *shape*, *size*, *alpha*, *linetype*, *group*, *fill* and *wight*. That are design to use many variables as you can!
+
+#### facet()
+
+This mean *faces*, divide the graph by variables using: *facet_wrap()* and *facet_grid()* functions, the fisrt is 1 variable, the second 2 variables, in general.
+
+#### geom features
+
+The grammar of graphics use *geom_smooth()*, *geom_bar()*, *geom_boxplot()*, *geom_histogram()*, geom_vline(), geom_hline() and geom_abline() like principals functions to make and exploratory graph analysis.
+
+#### coordinates
+
+You can flip coordinates using: *coord_flip()* function, also yoy can use *coor_quickmap()* for making maps or c*oor_polar()* for make transformation or *coord_fixed()* to make scale data.
+
+## {-}
+
+With this brife introduction we can continue with the data analysis, to see more check **R for Data Science** [R4DS](https://r4ds.had.co.nz/index.html).
+
+## Filter a variable to analyze (pH o CE):
+
+```{r, echo = TRUE}
+library(DT)
+id <- which(is.na(AC_final$pH))
+AC_final <- AC_final[-id, ]
+```
+
+### Graphical Analysis:
+
+First we need some libraries additional to **tydiverse** package:
+
+```{r}
+library(ggpubr); library(ggrepel)
+library(ggExtra); library(plotly)
+library(ggridges); library(GGally)
+```
+
+To start with the graphical analysis we have to choose some quantitative and qualitative variables, we will choose only a few to make the analysis easier. The variables are hydrogen potencial (**pH**), electric conductivity (**Ce**) like quantitative variables, and **Temporada** (Avenida and Estiaje), **Subbasin**, **Tipo de Fuente** (Surface o Subsurface water) and **Clase Fuente** (Termal, Stream, River, Geiser, Spring, Gallery and filtering Gallery) like qualitative.
+
+We will use Uni-variant and Bi-variant Analysis with factors.
+
+First we take all the sub-basin together, and we will use panel set view to communicate data in easy way.
+
+### Graphical 1st Analysis {.panelset}
+
+#### pH Vs. Temporada-Tipo_Fuente 
+
+
+```{r}
+qplot(sample=pH, data=AC_final, facets = .~Temporada, color=Tipo_Fuente)+
+  labs(title="pH by Temporada and Tipo de Fuente",
+       y="pH (non-dimensional)")
+```
+
+In the picture above we can see that surface (Superficial) water have higher values than subsurface water (Subterránea) in the study area, and slightly tend to grow the values of pH between "Temporada" (higher values in Estiaje).
+
+#### Ce Vs. Temporada-Tipo_Fuente 
+
+```{r}
+qplot(sample=CE_uS_cm, data=AC_final, facets = .~Temporada, color=Tipo_Fuente)+
+  labs(title="Ce by Temporada and Tipo de Fuente",
+       y="Ce (uS/cm)")
+```
+
+In the uni-variant analysis of electric conductivity we can see a very similar behaivour between surface and subsurface water in both "temporada"
+
+Then we repeat similar code but change qualitative variables, you can analyze that in a similar way (that´s your job :cowboy_hat_face:)
+
+#### pH Vs. Microcuenca-Temporada
+
+```{r}
+qplot(sample=pH, data=AC_final, facets = .~Microcuenca, color=Temporada)+
+  labs(title="pH by Temporada and Tipo de Fuente",
+       y="pH (non-dimensional)")
+```
+
+#### Ce Vs. Microcuenca-Temporada
+
+```{r}
+qplot(sample=CE_uS_cm, data=AC_final, facets = .~Microcuenca, color=Temporada)+
+  labs(title="Ce by Temporada and Tipo de Fuente",
+       y="Ce (uS/cm)")
+```
+
+### Graphical 2nd Analysis {.panelset}
+
+Then we are going to set the bi-variant analysis:
+
+#### Univariant pH Distribution
+
+```{r}
+#Library Ridges:
+ggplot(AC_final, aes(x=pH, y=Microcuenca))+
+  geom_density_ridges(aes(fill=Microcuenca))
+```
+
+That is not bi-variant, but is important to show you the uni-variant distribution of pH between sub-basins. We can see from the picture that Tuti and Maca have slightly similarities but the Cabanaconde Basin have bi-modal distribution of pH (we can see two peaks in the density distribution for Cabanaconde). 
+
+Try to thing what is the reason because Cabanaconde have this behaviour :thinking:
+
+#### Ggplot and Scatterplot
+
+```{r}
+#Scatter e Histograma
+ggscatterhist(AC_final, x="pH", y="CE_uS_cm",color="Microcuenca",
+              margin.plot = "boxplot",
+              ggtheme = theme_bw())
+```
+
+## {-}
+
+Last but not least, interactive graphs. Well, I am not going to explain the next graphs, but you can interact with these, so I let you try to do it and analyze in your own way, you have the data so do not worry!! :nerd_face: let´s do it.
+
+### Graphical 3erd Analysis {.panelset}
+
+#### TDS by size
+
+```{r}
+# Graphing TDS according to size:
+p <- ggplot(AC_final, aes(x=pH, y=CE_uS_cm, color=Microcuenca))+
+  geom_point(aes(size=TDS_mg_L))
+ggplotly(p)
+```
+
+#### Boxplot pH by Temporada
+
+```{r}
+q <- ggplot(AC_final, aes(x=Microcuenca, y=pH, color=Temporada))+
+  geom_boxplot(position = position_dodge(0.8))+
+  geom_jitter(position = position_dodge(0.8),size=2)+
+  scale_color_manual(values = c("steelblue","red"))
+ggplotly(q)
+```
+
+#### Bi-variant analysis pH Vs. Ce with factors Fuente, Temporada and 
+
+```{r}
+r <- ggplot(AC_final, aes(x=pH, y=CE_uS_cm, shape = Temporada, color =Microcuenca ))+
+  geom_point(size=3.5)+
+  facet_grid(.~ Tipo_Fuente)+
+  geom_rug()+
+  labs(title = "pH Vs. CE (Temporada,Microcuenca,Fuente)")
+ggplotly(r)
+```
+
+#### Boxplot ph by Microcuenca in Alto Camana
+
+```{r}
+p <- ggplot(AC_final, aes(x=Microcuenca, y=pH, fill=Temporada))+
+  geom_boxplot()+
+  labs(title = "Boxplot de pH por Microcuenca en Alto Camana")+
+  facet_grid(.~ Tipo_Fuente )
+ggplotly(p)
+```
+
+#### Point values + statistics
+
+```{r}
+pH_Plot <- ggplot(AC_final, aes(x=Microcuenca, y=pH, color=Temporada))+
+  geom_jitter(position=position_jitter(0.2), size=2)+
+  facet_grid(.~Temporada)+
+labs(title = "Boxplot de pH ")+
+  scale_color_manual(values = c("steelblue","red"))+
+  theme_minimal()
+data_summary<-function(x){
+  m <- mean(x)
+  ymin <- m-sd(x)
+  ymax <- m+sd(x)
+  return(c(y=m, ymin=ymin, ymax=ymax))
+}
+pH_Plot + stat_summary(fun.data = data_summary, color="red")
+```
+
+### Creating Classification accord to TDS:
+
+Also we can classify the data following some qualitative criteria to change quantitative criteria, we create a TDS_cla variable following the classification of [Zekâi Şen](https://www.elsevier.com/books/practical-and-applied-hydrogeology/sen/978-0-12-800075-5).
+
+```{r}
+AC_final$TDS_cla <- with(AC_final,ifelse(TDS_mg_L >= 0 & TDS_mg_L < 200, "Fresh Water",
+                           ifelse(TDS_mg_L >= 200 & TDS_mg_L < 500, "Brackish Water"
+                                  ,(ifelse(TDS_mg_L>=500 & TDS_mg_L<1500,"Saline Water","Brine Water")))))
+AC_final$TDS_cla <- factor(AC_final$TDS_cla, ordered = TRUE)
+summary(AC_final$TDS_cla)
+```
+
+We have the new variable classification with the majority between Fresh and Brackish Water, next Saline Water and finally Brine Water.
+
+
+### Multivariable Filters:
+
+We can filter wharever that our mind want to do it, is so is easy with pipelines and tidyverse :smile: so let´s´go to try some filter. You can guess what I want to do.
+
+>##### "Filter 1"
+>
+> This filtre is preparate to select some variables from the data frame then works like group by Temporada and summarise mean of the selected values.
+>
+> — _A.Otiniano_
+
+```{r}
+# Sumario de Media Aritmética de Valores seleccionados por Temporada
+Filtro1 <- AC_final %>%
+  select(Temporada, As_com, B_com, Cu_com, Fe_com, Mn_com, Ti_com, Ni_com, pH, CE_uS_cm, T_Fuente) %>%
+  group_by(Temporada) %>%
+  summarise_if(is.numeric, mean, na.rm = TRUE) 
+Filtro1
+```
+
+>##### "Filter 2" 
+
+```{r}
+# Sumario de Media Aritmética de Valores seleccionados por Temporada
+Filtro2 <- AC_final %>%
+  select(Microcuenca, As_com, B_com, Cu_com, Fe_com, Mn_com, Ti_com, Ni_com, pH, CE_uS_cm, T_Fuente) %>%
+  group_by(Microcuenca) %>%
+  summarise_if(is.numeric, mean, na.rm = TRUE)
+Filtro2
+```
+
+>##### "Filter 3"
+
+```{r}
+# Sumario de Media Aritmética de Valores seleccionados por Temporada
+Filtro3 <- AC_final %>%
+  select(Tipo_Fuente, As_com, B_com, Cu_com, Fe_com, Mn_com, Ti_com, Ni_com, pH, CE_uS_cm, T_Fuente) %>%
+  group_by(Tipo_Fuente) %>%
+  summarise_if(is.numeric, mean, na.rm = TRUE)
+Filtro3
+```
+
+>##### "Filter 4"
+
+```{r}
+# Sumario de Media Aritmética de Valores seleccionados por Temporada
+Filtro4 <- AC_final %>%
+  select(Clase_Fuente, As_com,Cu_com) %>%
+  group_by(Clase_Fuente) %>%
+  summarise_if(is.numeric, funs(n(),mean, sd, median))
+Filtro4
+```
+
+>##### "Filter 5" 
+
+```{r}
+Filtro5 <- AC_final %>%
+  select(Temporada, As_com, B_com, Cu_com, Fe_com, Mn_com, Ti_com, Ni_com, pH, CE_uS_cm, T_Fuente) %>%
+  group_by(Temporada) %>%
+summarise_at(.vars = c("pH", "CE_uS_cm"),
+               .funs = c(Mean="mean", Median="median", Sd="sd"))
+Filtro5
+```
+
+>##### "Filter 6"
+
+```{r}
+Filtro6 <- AC_final %>% 
+  select(Temporada, Microcuenca, Tipo_Fuente,Clase_Fuente, As_com, B_com, Cu_com, Fe_com, Mn_com, Ti_com, Ni_com, pH, CE_uS_cm, T_Fuente) %>%
+  filter(pH > 6.5) %>%
+  group_by(Temporada, Microcuenca, Tipo_Fuente, Clase_Fuente) %>%
+  summarise(
+    n = n(),
+    mean_As = round(mean(As_com, na.rm = TRUE),4),
+    mean_Cu = round(mean(Cu_com, na.rm = TRUE),4)
+) %>%
+  arrange(desc(n))
+datatable(Filtro6, filter = "top") 
+```
+
+Like you see you can filter all that you want and in the way that you want, also you can create with *datatable()* function awesome manilupation of data in html or interactive presentations in web.
+
+## Complete Statistic Summary (Quantitative Variables):
+
+Finally, we are going to see a complete statistics summary create by some simple code.
+
+```{r}
+#Appliying to pH and CE mean values.
+apply(AC_final[ ,c("pH","CE_uS_cm")],2, mean)
+```
+
+
+```{r}
+estadisticos <- function(x){
+Valores <- c(length(x),sum(is.na(x)),min(x, na.rm = TRUE),
+             quantile(x,probs = 0.25, na.rm = TRUE)-1.5*IQR(x, na.rm = TRUE) ,
+             quantile(x,probs = 0.25, na.rm = TRUE),
+             median(x, na.rm = TRUE),mean(x, na.rm = TRUE),mean(x,trim = 0.025, na.rm = TRUE),
+             quantile(x,probs=0.75, na.rm = TRUE),max(x, na.rm = TRUE),
+             quantile(x,probs = 0.25, na.rm = TRUE)+1.5*IQR(x, na.rm = TRUE),
+             IQR(x, na.rm = TRUE), mad(x, na.rm = TRUE),sd(x, na.rm = TRUE),
+             skew(x, na.rm = TRUE),kurtosi(x, na.rm = TRUE),
+             CV_CE=(sd(x, na.rm = TRUE)/mean(x, na.rm = TRUE))*100)
+}
+
+subset_data <- AC_final %>% 
+  select(Temporada, pH, CE_uS_cm, As_com, B_com, Cu_com, Fe_com, Mn_com, Ni_com) %>%
+  filter(Temporada=="Estiaje")
+colnames(subset_data)
+```
+
+```{r}
+es <- sapply(subset_data[ ,2:9], estadisticos) # 2:9 O -1 funciona igual.
+Nombres <- c("n","Vacios","Minimo","LI","Q1","Me:diana","Media","Media Cortada","Q3","Maximo","LS",
+             "IQR","MAD", "Sd", "As","k", "CV")
+rownames(es) <- Nombres
+f <- data.frame(es)
+datatable(f)
+```
+
+```{r}
+write.csv(f, file = "Sumario_Estiaje.csv") #Exportar como .csv
+```
+
+# Bibliography:
+
+The bibliography to go deeper in the evaluation of data is the following:
+
+* R for Data Science, ver [R4DS](https://r4ds.had.co.nz/index.html), [Hands-On Programming with R](https://rstudio-education.github.io/hopr/).
+
+* Colección de Paquetes Data Science, ver [Tidyverse](https://www.tidyverse.org) y [listado de paquetes](https://roelverbelen.netlify.app/resources/r/packages/).
+
+* Generación de Libros Interactivos, documentos y analisis, ver [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/), [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/), [bookdown](https://bookdown.org/yihui/bookdown/), [Mastering Shiny](https://mastering-shiny.org), [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/index.html)
+
+* Rstudio y R, ver [Rstudio](https://www.rstudio.com), [Studio Blog](https://blog.rstudio.com), [useR](https://user2021.r-project.org/blog/).
+
+* Journals - Books, ver [The R Journal](https://journal.r-project.org), [Chapman & Hall/CRC The R Series](https://www.routledge.com/Chapman--HallCRC-The-R-Series/book-series/CRCTHERSER), [Serie Use R](https://www.springer.com/series/6991?detailsPage=titles).
+
+* Machine Learning, ver [Hands-On Machine Learning with R](https://bradleyboehmke.github.io/HOML/).
+
+* Geoquimica, ver [Geochemical Modelling of Igneous Processes – Principles And Recipes in R Language](https://www.springer.com/gp/book/9783662467916), paquetes importantes Geological Survey of Canada - [rgr:Applied Geochemestry Data EDA](https://cran.r-project.org/web/packages/rgr/index.html) y USGS - [GcClust: Clustering regional geochemical data](https://pubs.er.usgs.gov/publication/tm7C13)
+
+* Hidroquimica, ver [CRAN Task View: Hydrological Data and Modeling](https://cran.r-project.org/web/views/Hydrology.html).
