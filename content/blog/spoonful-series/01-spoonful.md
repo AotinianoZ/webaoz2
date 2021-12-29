@@ -5,6 +5,11 @@ excerpt: Read data and verify structure is the most important step in data scien
 subtitle: ""
 title: Read and Structure
 weight: 1
+links:
+- icon: door-open
+  icon_pack: fas
+  name: website
+  url: https://github.com/AotinianoZ/Geoscience_Multiverse
 ---
 
 

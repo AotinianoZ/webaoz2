@@ -1,20 +1,28 @@
 ---
 title: Surface Water Analysis - Non Spatial I
-author: Alonso Otiniano
+layout: single-sidebar
 date: '2021-12-27'
-slug: []
-excerpt: We are going to show you the first steps in analyze data from water resource from INGEMMET.
-subtitle: "Subbasin Alto Camaná - Arequipa"
-layout: singel-sidebar
 categories:
   - Water
 tags:
   - data science
+author: Alonso Otiniano
+slug: []
+excerpt: We are going to show you the first steps in analyze data from water resource from INGEMMET.
+subtitle: "Subbasin Alto Camaná - Arequipa"
+summary: "Subbasin Alto Camaná - Arequipa" 
+featured: true
+draft: false
 output: 
   blogdown::html_page:
     toc: true # table of content true
-    number_sections: true  ## if you want number sections at each table header
-    highlight: "espresso"  # specifies the syntax highlighting styl
+    number_sections: no  ## if you want number sections at each table header
+    highlight: "espresso"  # specifies the syntax highlighting style
+links:
+- icon: door-open
+  icon_pack: fas
+  name: website
+  url: https://github.com/AotinianoZ/Geoscience_Multiverse    
 ---
 
 # Data Base (Structure and General Review).
@@ -354,11 +362,10 @@ The grammar of graphics use *geom_smooth()*, *geom_bar()*, *geom_boxplot()*, *ge
 
 You can flip coordinates using: *coord_flip()* function, also yoy can use *coor_quickmap()* for making maps or c*oor_polar()* for make transformation or *coord_fixed()* to make scale data.
 
-## {-}
-
-With this brife introduction we can continue with the data analysis, to see more check **R for Data Science** [R4DS](https://r4ds.had.co.nz/index.html).
 
 ## Filter a variable to analyze (pH o CE):
+
+With this brife introduction we can continue with the data analysis, to see more check **R for Data Science** [R4DS](https://r4ds.had.co.nz/index.html).
 
 ```{r, echo = TRUE}
 library(DT)
@@ -643,12 +650,31 @@ Nombres <- c("n","Vacios","Minimo","LI","Q1","Me:diana","Media","Media Cortada",
              "IQR","MAD", "Sd", "As","k", "CV")
 rownames(es) <- Nombres
 f <- data.frame(es)
-datatable(f)
+#datatable(f) to look fancy
+f
 ```
 
 ```{r}
 write.csv(f, file = "Sumario_Estiaje.csv") #Exportar como .csv
 ```
+
+# Conclusions:
+
++ The analysis of structure and some exploratory graphs are very useful to start interpretation in water data analysis.
+
++ Coding is an efficient way to work with data frame, more with big and complex structures.
+
++ We can automatize the analysis through programming language reducing 20 times that we made in a normal way.
+
+
+# Recommendations:
+
++ You have considerate the time to learn programming but at the same the huge benefits that you recipe when you know.
+
++ Taking step by step learning how to analyze data from water resource.
+
++ Explore as much as you can the variables and relation between them.
+
 
 # Bibliography:
 
