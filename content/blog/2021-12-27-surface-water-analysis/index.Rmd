@@ -27,7 +27,7 @@ links:
 
 # Data Base (Structure and General Review).
 
-It is recommendable to look up [Cheetsheet Rstudio](https://www.rstudio.com/resources/cheatsheets/) that contain many of the functions that we are going to use for the analysis. We are going to start loading the principal libraries  (*before you have to install the libraries*)
+It is recommendable to look up [Cheetsheet Rstudio](https://www.rstudio.com/resources/cheatsheets/) that contain many of the functions that we are going to use for the analysis. We are going to start loading the principal libraries  (*before you have to install the libraries*).
 
 ```{r, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message=FALSE, fig.align = 'center')
@@ -650,7 +650,7 @@ Nombres <- c("n","Vacios","Minimo","LI","Q1","Me:diana","Media","Media Cortada",
              "IQR","MAD", "Sd", "As","k", "CV")
 rownames(es) <- Nombres
 f <- data.frame(es)
-#datatable(f) to look fancy
+#datatable(f) to look fancy.
 f
 ```
 
