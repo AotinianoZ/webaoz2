@@ -111,6 +111,10 @@ menu:
       title: Project Portfolio
       url: /project/
       weight: 3
+    - name: Research
+      title: Research
+      url: /research/
+      weight: 4
     - name: Talks
       title: Talks
       url: /talk/

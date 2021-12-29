@@ -11,7 +11,7 @@ intro: |
   I hope this blog helps you to know better the geological data science and enjoy the experince of interact with data of any kind. A place to enjoy, a place to know more. 
 show_outro: true
 outro: |
-  <i class="fas fa-glass-cheers pr2"></i>Sincere thanks to [Maëlle Salmon](https://masalmon.eu/) for her help naming this Hugo theme!
+  <i class="fas fa-atom pr2"></i>Geological Engineer loving code, <br> curious about all new technologies and helping the society to know geology. 
 ---
 
 ** index doesn't contain a body, just front matter above.
