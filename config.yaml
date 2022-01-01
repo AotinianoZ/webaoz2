@@ -51,24 +51,24 @@ params:
     - icon: github
       icon_pack: fab
       url: https://github.com/AotinianoZ
-    - icon: facebook-square
+    - icon: linkedin
       icon_pack: fab
-      url: https://www.facebook.com/hashtag/ap%C3%A9ro
-    - icon: instagram
-      icon_pack: fab
-      url: https://www.instagram.com/explore/tags/apero/
+      link: https://www.linkedin.com/in/aotinianoz/
+#    - icon: instagram
+#      icon_pack: fab
+#      url: https://www.instagram.com/explore/tags/apero/
     - icon: twitter
       icon_pack: fab
       url: https://twitter.com/OtinianoAlonso
-    - icon: impactstory
-      icon_pack: ai
-      url: https://impactstory.org/u/0000-0002-8082-1890
+#    - icon: impactstory
+#      icon_pack: ai
+#      url: https://impactstory.org/u/0000-0002-8082-1890
     - icon: orcid
       icon_pack: ai
       url: https://orcid.org/0000-0001-6282-7992
-    - icon: rss
-      icon_pack: fas
-      url: /blog/index.xml
+    - icon: youtube
+      icon_pack: fab
+      url: https://www.youtube.com/channel/UCJHUjxJjrWNCrvxFWOCYiUQ
   socialInFooter: yes
   socialInHeader: no
   textFontFamily: sans-serif
