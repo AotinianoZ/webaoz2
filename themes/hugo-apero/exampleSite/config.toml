@@ -165,8 +165,8 @@ enableEmoji = true
     disable = false
   [privacy.googleAnalytics]
     disable = false
-    anonymizeIP = true
-    respectDoNotTrack = true
+    anonymizeIP = false
+    respectDoNotTrack = false
   [privacy.instagram]
     disable = false
     simple = true
