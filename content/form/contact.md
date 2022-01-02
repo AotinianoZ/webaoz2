@@ -2,7 +2,7 @@
 date: "2019-02-25T13:38:41-06:00"
 description: To **contact-us** form built right in. All you need is fill the **Full Name**, **E-mail address** and **Message**.
 draft: false
-formspree_form_id: alonso.otiniano.z@uni.pe
+formspree_form_id: xnqwnzkb
 layout: split-right
 name: Contact Us Form
 show_poweredby_formspree: true
