@@ -19,4 +19,4 @@ min_version = "0.79.0"
     repo = "https://github.com/formspree/blogophonic-hugo"
 
 # Enable analytics by entering your Google Analytics tracking ID
-GoogleAnalytics = "G-B03S37TBXC"
+googleAnalytics = "G-B03S37TBXC"
