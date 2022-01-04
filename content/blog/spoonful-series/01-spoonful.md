@@ -1,9 +1,9 @@
 ---
 date: "2021-12-26"
 draft: false
-excerpt: Read data and verify structure is the most important step in data science, in this first post I am going to show you how to do it with data from Institute of Geological, Metallurgic and Mining relate to Enviromental Base Line (Water Resource)
-subtitle: ""
-title: Read and Structure
+excerpt: Tha artificial intelligence change all in te way to evaluate and work with data, moreover the necessity to have a good automated reports and analysis of geological complex features. In this part I am going to explain and teach you the process to prepare your own machine learning structure applied to geology 
+subtitle: "Artificial Neuronal Networks in Geology"
+title: Machine Learning in Geological Hazards
 weight: 1
 links:
 - icon: door-open
@@ -12,17 +12,9 @@ links:
   url: https://github.com/AotinianoZ/Geoscience_Multiverse
 ---
 
+## Is coming soon
 
-## Downloading Data
-
-### Reading Data
 
 ---
 
-Let's start.
-
-## Check Structure
-
-## Subset Information
-
-## Making son interesting graphs
+Let's start (soon).

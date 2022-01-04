@@ -12,7 +12,7 @@ link_list:
 - name: r-spatial
   url: https://r-spatial.org
 - name: Dr. Dennis Helsel 
-  url: hhttps://practicalstats.com/consulting/credentials.html
+  url: https://practicalstats.com/consulting/credentials.html
 ---
 
 ** index doesn't contain a body, just front matter above.

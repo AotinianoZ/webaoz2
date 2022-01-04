@@ -53,7 +53,7 @@ params:
       url: https://github.com/AotinianoZ
     - icon: linkedin
       icon_pack: fab
-      link: https://www.linkedin.com/in/aotinianoz/
+      link: www.linkedin.com/in/aotinianoz/
 #    - icon: instagram
 #      icon_pack: fab
 #      url: https://www.instagram.com/explore/tags/apero/
@@ -140,3 +140,6 @@ privacy:
   youtube:
     disable: no
     privacyEnhanced: yes
+  linkedin:
+    disable: no
+    simple: yes

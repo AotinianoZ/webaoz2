@@ -6,7 +6,7 @@ date: "2020-09-12"
 date_end: "2021-03-01"
 draft: false
 event: uni::global(2021)
-event_url: https://global.rstudio.com
+event_url: https://classroom.google.com/u/0/c/ODE3NDczNTUwNDRa
 excerpt: Here is a talk I gave to National University of Engineering to develop skills in Data Analysis in Geology using **Python** and **Rstudio**.
 featured: true
 layout: single

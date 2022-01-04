@@ -6,7 +6,7 @@ cascade:
   - Geoscience Water Resource
   - R
   layout: single-series
-  series: Data Analysis in Water Resource
+  series: Data Analysis 
   show_author_byline: true
   show_post_date: true
   sidebar:
@@ -26,13 +26,13 @@ show_post_thumbnail: false
 sidebar:
   author: Alonso Otiniano
   description: |
-    Analysis data in Water Resource requerid many steps.
+    Analysis data in geological settings requerid many steps.
     I am going to show you how to do it in a **easy way**!
   show_sidebar_adunit: false
   text_link_label: ""
   text_link_url: ""
-  title: Data Analysis in Water Resource
-title: Data Analysis in Water Resource
+  title: Data Analysis
+title: Data Analysis
 ---
 
 ** No content below YAML for the series _index. This file is a leaf bundle, and provides settings for the listing page layout and sidebar content.**

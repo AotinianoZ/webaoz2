@@ -12,15 +12,15 @@ links:
 - icon: door-open
   icon_pack: fas
   name: website
-  url: https://allisonhorst.github.io/palmerpenguins/
+  url: https://webaoz2.netlify.app/
 - icon: github
   icon_pack: fab
   name: code
-  url: https://github.com/allisonhorst/palmerpenguins/
+  url: https://webaoz2.netlify.app
 - icon: newspaper
   icon_pack: far
   name: Blog post
-  url: https://education.rstudio.com/blog/2020/07/palmerpenguins-cran/
+  url: https://webaoz2.netlify.app
 subtitle: ""
 tags:
 - hugo-site
