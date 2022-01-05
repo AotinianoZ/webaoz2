@@ -26,9 +26,9 @@ markup:
   highlight:
     style: github
   tableOfContents:
-    endLevel: 2
-    ordered: no
     startLevel: 2
+    endLevel: 3
+    ordered: no
 params:
   custom_theme: ''
   customheadingFontFamily: Fraunces
