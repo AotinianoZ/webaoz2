@@ -1,7 +1,7 @@
 ---
 title: Publications
 description: |
-  This is home for my research publications, each linked with accompanying preprints, posters, and/or news pieces.
+  This is the home for my research publications, each linked with accompanying preprints, posters, and/or news pieces.
 author: "Alonso Otiniano"
 show_post_thumbnail: false
 thumbnail_left: true # for list-sidebar only
@@ -16,7 +16,7 @@ sidebar:
   description: |
     A home for my research publications.
     
-  author: "Silvia Canelón"
+  author: "Alonso Otiniano"
   text_link_label: Subscribe via RSS
   text_link_url: /index.xml
   show_sidebar_adunit: true # show ad container

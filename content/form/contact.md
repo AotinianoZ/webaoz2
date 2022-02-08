@@ -1,6 +1,6 @@
 ---
 date: "2019-02-25T13:38:41-06:00"
-description: To **contact-us** form built right in. All you need is fill the **Full Name**, **E-mail address** and **Message**.
+description: **Contact me** by sending me a message *here*.
 draft: false
 formspree_form_id: xnqwnzkb
 layout: split-right

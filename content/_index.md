@@ -2,8 +2,8 @@
 action_label: Read More &rarr;
 action_link: /about
 action_type: text
-description: I’m Alonso Otiniano, a Geoscience and Developer in Geology.
- In this page you are going to read and interactive with awesome developments in geology     related to enviromental geoscience, hydrogeology, geological hazards and geochemical.
+description: I’m Alonso Otiniano, a Geoscientist and Developer in Geology.
+ On this page you are going to read and interact with awesome developments in geology     related to environmental geoscience, hydrogeology, geological hazards and geochemical engineering.
 image_left: true
 images:
 - img/revoir.jpg

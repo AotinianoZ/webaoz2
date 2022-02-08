@@ -26,8 +26,8 @@ show_post_thumbnail: false
 sidebar:
   author: Alonso Otiniano
   description: |
-    Analysis data in geological settings requerid many steps.
-    I am going to show you how to do it in a **easy way**!
+    Data analysis in geological settings requires many steps.
+    I am going to show you how to do it in an **easy way**!
   show_sidebar_adunit: false
   text_link_label: ""
   text_link_url: ""

@@ -8,7 +8,7 @@ tags:
   - data science
 author: Alonso Otiniano
 slug: []
-excerpt: We are going to show you the first steps in analyze data from water resource from INGEMMET.
+excerpt: Demostrating the first steps in analyzing data from INGEMMET in water resource.
 subtitle: "Subbasin Alto Camaná - Arequipa"
 summary: "Subbasin Alto Camaná - Arequipa" 
 featured: true

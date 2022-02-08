@@ -11,7 +11,7 @@ cascade:
     text_link_label: View recent talks
     text_link_url: /talk/
 description: |
-  This is a list of my talks, workshops, or other events with a time, date, and place.
+  This is a list of my talks, workshops, or other events including details of upcoming events and recordings of past ones.
 layout: list
 show_author_byline: true
 show_button_links: true

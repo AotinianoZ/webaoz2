@@ -6,12 +6,13 @@ use_featured: false # if false, use most recent by date
 number_categories: 3 # set to zero to exclude
 show_intro: true
 intro: |
-  New technologies and data science have to be unique in the way to communicate information to more science and people in an efficient way. To achieve that goal I create this page with the object to share and transmite to all people the wonderful data science job in geology and the huge impact that this discipline have in the world.
+  Recent advances in data geoscience see us communicating information now in code. This new and unique form of communication requires us to understand both science method and code. I have created this page with the aim to share with others the wonderful work being done in this field and the huge impact this is having on geological work around the world.
   
-  I hope this blog helps you to know better the geological data science and enjoy the experince of interact with data of any kind. A place to enjoy, a place to know more. 
+  I hope this blog helps you to better understand the geological data science in an interactive way. A place to enjoy, a place to learn more.
+
 show_outro: true
 outro: |
-  <i class="fas fa-atom pr2"></i>Geological Engineer loving code, <br> curious about all new technologies and helping the society to know geology. 
+  <i class="fas fa-atom pr2"></i>Geological Engineer, code-loving, <br> curious about all new technologies and helping society to understand geology. 
 ---
 
 ** index doesn't contain a body, just front matter above.
