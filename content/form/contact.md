@@ -1,6 +1,6 @@
 ---
 date: "2019-02-25T13:38:41-06:00"
-description: **Contact me** by sending me a message *here*.
+description: Contact me by sending me a message *here*.
 draft: false
 formspree_form_id: xnqwnzkb
 layout: split-right
