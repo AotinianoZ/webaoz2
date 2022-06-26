@@ -15,5 +15,5 @@ title: Geoscience Blog
 type: home
 ---
 
-** index doesn't contain a body, just front matter above.
+** index doesn't contain a body, just front matter above
 See index.html in the layouts folder **
