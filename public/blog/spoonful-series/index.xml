@@ -1,41 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Data Analysis in Water Resource on Geoscience Blog</title>
+    <title>Data Analysis on Geoscience Blog</title>
     <link>https://webaoz2.netlify.app/blog/spoonful-series/</link>
-    <description>Recent content in Data Analysis in Water Resource on Geoscience Blog</description>
+    <description>Recent content in Data Analysis on Geoscience Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://webaoz2.netlify.app/blog/spoonful-series/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A first post</title>
+      <title>Machine Learning in Geological Hazards</title>
       <link>https://webaoz2.netlify.app/blog/spoonful-series/01-spoonful/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://webaoz2.netlify.app/blog/spoonful-series/01-spoonful/</guid>
-      <description> Downloading Data     Reading Data      Let&amp;rsquo;s start.
-Check Structure     Subset Information     Making son interesting graphs     </description>
+      <description>Is coming soon      Let&amp;rsquo;s start (soon).</description>
     </item>
     
     <item>
-      <title>A second post</title>
+      <title>Exploratory Analysis and Concepts in Water Resource</title>
       <link>https://webaoz2.netlify.app/blog/spoonful-series/02-spoonful/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://webaoz2.netlify.app/blog/spoonful-series/02-spoonful/</guid>
-      <description> part 2!     Working with Statistics      Exploratory Graphs     Statistics Test     Univariante and Bivariante Analysis     </description>
+      <description> Coming soon      Coming soon     </description>
     </item>
     
     <item>
-      <title>A third post</title>
+      <title>Automated Reports with Parameters</title>
       <link>https://webaoz2.netlify.app/blog/spoonful-series/03-spoonful/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://webaoz2.netlify.app/blog/spoonful-series/03-spoonful/</guid>
-      <description>Hi, I&#39;m the here-bot cat! Use me to find your way in your website.
-Here I am: content/blog\spoonful-series\03-spoonful\index.markdown  Here is my R Markdown source file: blog\spoonful-series\03-spoonful\index.Rmarkdown You&#39;ll want to edit this file, then re-knit to see the changes take effect in your site preview.
- To remove me, delete this line inside that file: {{&amp;lt; here &amp;gt;}}
-My content section is: blog  My layout is: single-series  Images in this page bundle: /blog/spoonful-series/03-spoonful/featured-photo.</description>
+      <description>¿What is an automated report with parameters?     Well, in simple terms an automated report is a document in any format (.docx, .ppt, .pdf, .html and so on) that can be update in a specific time window iteratively while is required, in the case refer to parameters, there are some variables that can be change, for example, basin, sub-basin, department, province, geological horizont, lake, etc. (espacial) and hourly, daily, monthly , etc.</description>
     </item>
     
   </channel>

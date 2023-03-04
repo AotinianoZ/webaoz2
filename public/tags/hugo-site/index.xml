@@ -8,38 +8,34 @@
     <language>en</language>
     <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://webaoz2.netlify.app/tags/hugo-site/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A first post</title>
+      <title>Machine Learning in Geological Hazards</title>
       <link>https://webaoz2.netlify.app/blog/spoonful-series/01-spoonful/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://webaoz2.netlify.app/blog/spoonful-series/01-spoonful/</guid>
-      <description> Downloading Data     Reading Data      Let&amp;rsquo;s start.
-Check Structure     Subset Information     Making son interesting graphs     </description>
+      <description>Is coming soon      Let&amp;rsquo;s start (soon).</description>
     </item>
     
     <item>
-      <title>A second post</title>
+      <title>Exploratory Analysis and Concepts in Water Resource</title>
       <link>https://webaoz2.netlify.app/blog/spoonful-series/02-spoonful/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://webaoz2.netlify.app/blog/spoonful-series/02-spoonful/</guid>
-      <description> part 2!     Working with Statistics      Exploratory Graphs     Statistics Test     Univariante and Bivariante Analysis     </description>
+      <description> Coming soon      Coming soon     </description>
     </item>
     
     <item>
-      <title>A third post</title>
+      <title>Automated Reports with Parameters</title>
       <link>https://webaoz2.netlify.app/blog/spoonful-series/03-spoonful/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://webaoz2.netlify.app/blog/spoonful-series/03-spoonful/</guid>
-      <description>Hi, I&#39;m the here-bot cat! Use me to find your way in your website.
-Here I am: content/blog\spoonful-series\03-spoonful\index.markdown  Here is my R Markdown source file: blog\spoonful-series\03-spoonful\index.Rmarkdown You&#39;ll want to edit this file, then re-knit to see the changes take effect in your site preview.
- To remove me, delete this line inside that file: {{&amp;lt; here &amp;gt;}}
-My content section is: blog  My layout is: single-series  Images in this page bundle: /blog/spoonful-series/03-spoonful/featured-photo.</description>
+      <description>¿What is an automated report with parameters?     Well, in simple terms an automated report is a document in any format (.docx, .ppt, .pdf, .html and so on) that can be update in a specific time window iteratively while is required, in the case refer to parameters, there are some variables that can be change, for example, basin, sub-basin, department, province, geological horizont, lake, etc. (espacial) and hourly, daily, monthly , etc.</description>
     </item>
     
     <item>
-      <title>Data Analysis in Water Resource</title>
+      <title>Data Analysis</title>
       <link>https://webaoz2.netlify.app/blog/spoonful-series/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -63,7 +59,11 @@ My content section is: blog  My layout is: single-series  Images in this page bu
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://webaoz2.netlify.app/project/giraffes/</guid>
-      <description>Hidroapp is a design system that allows you to analysis data online relate to hidrochemical water resource.      Data     How to use it?     Final Suggestions     </description>
+      <description>Hidroapp is a design system that allows you to analyze data online related to hydrochemical resources.      Data     The data sample is on the following link data link.
+The data contains the following columns:
+  Quantitative Variables:
+ pH Ce TDS Ca K Mg Na Cl SO4 HCO3 CO3    Qualitative Variables:
+ Codigo (Identifier) Temporada (Seasonality) Tipo_Fuente (Water Classification) Clase_Fuente (Surface and Subterranean Classification) ratingcol claseph    The quantitative variables are physico-chemical parameters, meanwhile the qualitative variables are the Codigo (Identifier), Temporada(Dry-&amp;ldquo;Estiaje&amp;rdquo; or Wet-&amp;ldquo;Avenida&amp;rdquo; season), Tipo_Fuente(Surface-&amp;ldquo;Superficial&amp;rdquo; or Subsurface-&amp;ldquo;Subterranean&amp;rdquo;), Clase_Fuente(), ratingcol-claseph (3 colors to mention if blue-basic, green-neutral or red-acid).</description>
     </item>
     
   </channel>

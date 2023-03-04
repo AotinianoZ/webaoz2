@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>soil on Geoscience Blog</title>
+    <link>https://webaoz2.netlify.app/tags/soil/</link>
+    <description>Recent content in soil on Geoscience Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://webaoz2.netlify.app/tags/soil/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Study to Determine Levels of Cadmium in Cocoa Crops Applied to Inland Areas of Peru: “The Case of the Campo Verde-Honoria Tournavista Corridor”</title>
+      <link>https://webaoz2.netlify.app/research/geostatistics-r/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/research/geostatistics-r/</guid>
+      <description>An study to determine levels of Cd in Cocoa Crops in Ucayali.</description>
+    </item>
+    
+  </channel>
+</rss>

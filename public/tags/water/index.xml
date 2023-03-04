@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>water on Geoscience Blog</title>
+    <link>https://webaoz2.netlify.app/tags/water/</link>
+    <description>Recent content in water on Geoscience Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 11 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://webaoz2.netlify.app/tags/water/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Evaluación hidrogeológica y geoambiental en la comunidad de contacto inicial Santa Rosa de Serjali. Región Ucayali, provincia Atalaya, distrito Sepahua</title>
+      <link>https://webaoz2.netlify.app/research/hydrogeology-geoenvironmental/</link>
+      <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/research/hydrogeology-geoenvironmental/</guid>
+      <description>Hydrogeological Evaluation and Geoenvironmental in the initial contact community Santa Rosa of Serjali. Ucayali Region, Atalaya province, district Sepahua - Peru.</description>
+    </item>
+    
+    <item>
+      <title>Estudio de línea base geoambiental de las subcuencas Vilcabamba, Santo Tomás y Alto Apurímac (Cusco - Apurímac) - [Boletín N 1]</title>
+      <link>https://webaoz2.netlify.app/research/lbg-cusco-apurimac/</link>
+      <pubDate>Mon, 01 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/research/lbg-cusco-apurimac/</guid>
+      <description>Geoenvironmental Base Line Research in the subbasins Vilcabamba, Santo Tomas and Alto Apurimac (Cusco-Apurímac), Peru.</description>
+    </item>
+    
+    <item>
+      <title>Inspección técnica de línea base geoambiental de la cuenca del río Puyango-Tumbes (lado peruano). Región Tumbes</title>
+      <link>https://webaoz2.netlify.app/research/lbg-tumbes/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/research/lbg-tumbes/</guid>
+      <description>Geoenvironmental Base Line Inspection of River Puyango-Tumbes (peruvian side) that allows determinated that source of heavy metals come from Puyango in Ecuador.</description>
+    </item>
+    
+  </channel>
+</rss>

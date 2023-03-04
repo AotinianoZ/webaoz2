@@ -6,13 +6,94 @@
     <description>Recent content in Tags on Geoscience Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://webaoz2.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://webaoz2.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>data science</title>
+      <link>https://webaoz2.netlify.app/tags/data-science/</link>
+      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/tags/data-science/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>hugo-site</title>
       <link>https://webaoz2.netlify.app/tags/hugo-site/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://webaoz2.netlify.app/tags/hugo-site/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>heavy metals</title>
+      <link>https://webaoz2.netlify.app/tags/heavy-metals/</link>
+      <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/tags/heavy-metals/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://webaoz2.netlify.app/tags/r/</link>
+      <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>statistics</title>
+      <link>https://webaoz2.netlify.app/tags/statistics/</link>
+      <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/tags/statistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>water</title>
+      <link>https://webaoz2.netlify.app/tags/water/</link>
+      <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/tags/water/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cacao beans</title>
+      <link>https://webaoz2.netlify.app/tags/cacao-beans/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/tags/cacao-beans/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cadmium</title>
+      <link>https://webaoz2.netlify.app/tags/cadmium/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/tags/cadmium/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>geostatistics</title>
+      <link>https://webaoz2.netlify.app/tags/geostatistics/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/tags/geostatistics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>soil</title>
+      <link>https://webaoz2.netlify.app/tags/soil/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://webaoz2.netlify.app/tags/soil/</guid>
       <description></description>
     </item>
     

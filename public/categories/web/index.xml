@@ -23,7 +23,11 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://webaoz2.netlify.app/project/giraffes/</guid>
-      <description>Hidroapp is a design system that allows you to analysis data online relate to hidrochemical water resource.      Data     How to use it?     Final Suggestions     </description>
+      <description>Hidroapp is a design system that allows you to analyze data online related to hydrochemical resources.      Data     The data sample is on the following link data link.
+The data contains the following columns:
+  Quantitative Variables:
+ pH Ce TDS Ca K Mg Na Cl SO4 HCO3 CO3    Qualitative Variables:
+ Codigo (Identifier) Temporada (Seasonality) Tipo_Fuente (Water Classification) Clase_Fuente (Surface and Subterranean Classification) ratingcol claseph    The quantitative variables are physico-chemical parameters, meanwhile the qualitative variables are the Codigo (Identifier), Temporada(Dry-&amp;ldquo;Estiaje&amp;rdquo; or Wet-&amp;ldquo;Avenida&amp;rdquo; season), Tipo_Fuente(Surface-&amp;ldquo;Superficial&amp;rdquo; or Subsurface-&amp;ldquo;Subterranean&amp;rdquo;), Clase_Fuente(), ratingcol-claseph (3 colors to mention if blue-basic, green-neutral or red-acid).</description>
     </item>
     
   </channel>
